@@ -21,3 +21,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+  
+  .post-enter {      /*4 заменяем название на post во всех классах */
+    transform: translateX(-350px);  /* 5 делаем анимацию выезжающей (добавление)*/
+  }
+  .post-enter-active {
+    transform: translateX(0px);   /*  5 делаем анимацию выезжающей */
+    transition: all 500ms ease-in;
+  }
+  .post-exit {
+    opacity: 1;
+  }
+  .post-exit-active {
+    transform: translateX(-350px);  /*  5 делаем анимацию выезжающей(удаление) */
+    transition: all 500ms ease-in;
+  }
+  
