@@ -8,18 +8,24 @@ import MyButton from './components/UI/button/MyButton';
 import { usePosts } from './hooks/usePost';
 import axios from 'axios' 
 import PostServise from './API/postServise';
+import Loader from './components/UI/Loader/Loader'; 
+import { useFetching } from './hooks/useFetching';
 
 
 function App() {
   const [posts, setPosts] = useState([])
   const [filter, setFilter] = useState({ sort: '', query: '' })
   const [modal, setModal] = useState(false);
-  const sortedAndSearcedPosts = usePosts(posts, filter.sort, filter.query)   
+  const sortedAndSearcedPosts = usePosts(posts, filter.sort, filter.query) 
+  const [fetchPosts, isPostLoading, postError] = useFetching(async() => {
+    const posts = await PostServise.getAll();
+    setPosts(posts)
+  })
 
 
-  useEffect(() => {      /*1 пишем функцию, первым параметром некоторый колбек, вторым массив зависимостей */
+  useEffect(() => {     
     fetchPosts()
-  }, [])                 /* оставляем ее пустым что бы функция отработала 1 раз */
+  }, [])                 
 
 
   const createPost = (newPost) => {
@@ -27,21 +33,15 @@ function App() {
     setModal(false)
   }
 
-  async function fetchPosts() {   
-    const posts = await PostServise.getAll();
-    setPosts(posts)
-  }
-
-
   const removePost = (post) => {
     setPosts(posts.filter(p => p.id !== post.id))
 
   }
 
 
-  return (fdhfdhdfh
+  return (
     <div className="App">
-      
+
       <MyButton style={{ marginTop: 30 }} onClick={() => setModal(true)}>
         Создать пользователя
       </MyButton>
@@ -54,7 +54,14 @@ function App() {
         filter={filter}
         setFilter={setFilter}
       />
-      <PostList remove={removePost} posts={sortedAndSearcedPosts} title="посты про Javascript" />
+      {postError &&
+        <h1>Произошла ошибка ${postError}</h1>}
+      {isPostLoading 
+        ? <div style={{display: "flex", justifyContent:"center", marginTop: 50}}><Loader/></div>  
+        : <PostList remove={removePost} posts={sortedAndSearcedPosts} title="посты про Javascript" />  
+      
+      }
+      
     </div> 
   );
 }

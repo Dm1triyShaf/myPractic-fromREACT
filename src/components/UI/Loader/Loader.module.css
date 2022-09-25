@@ -1,0 +1,16 @@
+.loader {
+    width: 100px;   /* ширина */
+    height: 100px;   /* высота */
+    border-radius: 50%;  /* закругление */
+    border: 3px dashed teal; /* рамка пунктирная */
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {   /* создаем анимацию */
+    from {
+        transform: rotate(0deg) scale(1);  /* начало анимации */
+    }
+    to {
+        transform: rotate(360deg) scale(1.4); /* конец анимации */
+    }
+}
