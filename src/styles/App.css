@@ -23,18 +23,33 @@
 }
 
   
-  .post-enter {      /*4 заменяем название на post во всех классах */
-    transform: translateX(-350px);  /* 5 делаем анимацию выезжающей (добавление)*/
+  .post-enter {      
+    transform: translateX(-350px);  
   }
   .post-enter-active {
-    transform: translateX(0px);   /*  5 делаем анимацию выезжающей */
+    transform: translateX(0px);   
     transition: all 500ms ease-in;
   }
   .post-exit {
     opacity: 1;
   }
   .post-exit-active {
-    transform: translateX(-350px);  /*  5 делаем анимацию выезжающей(удаление) */
+    transform: translateX(-350px);  
     transition: all 500ms ease-in;
   }
   
+  .page_wrapper {
+    margin-top: 30px;
+    display: flex;
+  }
+
+  .page {
+    padding: 10px;
+    border: 1px solid teal;
+    cursor: pointer;
+  }
+
+  .page_current {
+    border: 2px solid orange;
+    font-weight: bold;
+  }
