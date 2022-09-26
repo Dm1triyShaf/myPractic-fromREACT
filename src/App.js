@@ -18,15 +18,15 @@ function App() {
   const [posts, setPosts] = useState([])
   const [filter, setFilter] = useState({ sort: '', query: '' })
   const [modal, setModal] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);    /* 1 создаем состояние в которое будем помещать общее количество постов */
+  const [limit, setLimit] = useState(10);  /* 5 создаем состояние для лимита */
+  const [page, setPage] = useState(1);   /* 6 состояние для номера страницы */
   const sortedAndSearcedPosts = usePosts(posts, filter.sort, filter.query) 
   
   const [fetchPosts, isPostLoading, postError] = useFetching(async() => {
-    const response = await PostServise.getAll(limit,page);
+    const response = await PostServise.getAll(limit,page);  /* 7 передаем эти параметры */
     setPosts(response.data)
-    const totalCount = response.headers['x-total-count']
+    const totalCount = response.headers['x-total-count']  /* 2 обращаемся к хедэрам и достаем x-total-count */
     setTotalPages(getPageCount(totalCount, limit))
   })
 
