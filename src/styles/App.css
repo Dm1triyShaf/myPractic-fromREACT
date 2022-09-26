@@ -38,18 +38,18 @@
     transition: all 500ms ease-in;
   }
   
-  .page_wrapper {
+  .page_wrapper {   /* стили для обертки */
     margin-top: 30px;
     display: flex;
   }
 
-  .page {
-    padding: 10px;
-    border: 1px solid teal;
-    cursor: pointer;
+  .page {   /* стили для кнопок */
+    padding: 10px;    /* отступы */
+    border: 1px solid teal;  /* рамка */
+    cursor: pointer;    /* шрифт */
   }
 
-  .page_current {
-    border: 2px solid orange;
-    font-weight: bold;
+  .page_current {   /* отобращаем страницу в текущий момент */
+    border: 2px solid orange;  /* цвет рамки */
+    font-weight: bold;   /*  текст */
   }

@@ -1,12 +1,12 @@
-export const getPageCount = (totalCount, limit) => {
-    return Math.ceil(totalCount/limit)
+export const getPageCount = (totalCount, limit) => {   /* 8 создаем фугкцию для работы с номерами страниц. Агрументом будет общще количесво элементов */
+    return Math.ceil(totalCount/limit)     /* и возвращать необходимое количество страниц */
 }
 
 
-export const getPagesArray = (totalPages) => {
-    let result = [];
-    for (let i = 0; i < totalPages; i++) {
-        result.push(i + 1)
+export const getPagesArray = (totalPages) => {  /* 10 создаем функцию которая принимает общее количесво страниц и на основании количесва заполняет масссив */
+    let result = [];   /* 11 создаем массив */
+    for (let i = 0; i < totalPages; i++) {  
+        result.push(i + 1) /* 12 этот массив заполняем числами от одного до количесво страниц */
     }
-    return result;
+    return result;  /* 14 возвращаем массив из функции */
 }
